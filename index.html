@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Girl in the Blue Saree</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f2;--ink:#1d2a2e;--mute:#5d6e74;--acc:#3f6a8f;--line:#cfd8db;--fs:20px;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#141d1f;--ink:#d9e2dc;--mute:#8ea09f;--acc:#7fa6c9;--line:#26343a;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Newsreader",Georgia,"Times New Roman",serif;font-size:var(--fs);line-height:1.7}
+button{font:inherit;color:inherit;background:none;border:1px solid var(--line);border-radius:6px;padding:.3em .8em;cursor:pointer}
+button:hover:not(:disabled){border-color:var(--acc);color:var(--acc)}
+button:disabled{opacity:.45;cursor:default}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+#bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;background:var(--acc);z-index:20}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;gap:.6rem;align-items:center;justify-content:space-between;padding:.6rem 1rem;font-size:16px;flex-wrap:wrap}
+header .t{font-weight:600}
+.tools{display:flex;gap:.4rem}
+nav{max-width:62ch;margin:0 auto;padding:1.2rem 1rem 0;font-size:16px;display:flex;flex-wrap:wrap;gap:.5rem}
+nav button.on{border-color:var(--acc);color:var(--acc)}
+main{max-width:62ch;margin:0 auto;padding:1rem 1rem 4rem}
+.card{margin:2.5rem 0 2rem}
+.card .n{font-size:5rem;line-height:1;color:var(--line);font-weight:600}
+h1{font-size:2rem;line-height:1.2;margin:.2rem 0 .4rem;font-weight:600}
+.meta{color:var(--mute);font-size:.8em;font-style:italic;margin:0}
+p{margin:0 0 1.1em}
+p.say{padding-left:1em;border-left:2px solid var(--line)}
+figure{margin:2rem 0;position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;display:grid;place-items:center;
+  background:linear-gradient(160deg,var(--line),var(--bg));color:var(--mute);font-size:.7em;text-align:center;padding:1rem}
+figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.end{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;display:flex;justify-content:space-between;gap:1rem;align-items:center;font-size:16px;flex-wrap:wrap}
+.hook{font-style:italic;color:var(--mute);margin-top:2rem}
+@media (prefers-reduced-motion:no-preference){main{animation:in .5s ease}@keyframes in{from{opacity:0}to{opacity:1}}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header>
+  <span class="t">The Girl in the Blue Saree</span>
+  <span class="tools">
+    <button id="sm" aria-label="Smaller text">A&minus;</button>
+    <button id="lg" aria-label="Larger text">A+</button>
+    <button id="th" aria-label="Switch light or dark">Light/Dark</button>
+  </span>
+</header>
+<nav id="nav" aria-label="Parts"></nav>
+<main id="main"></main>
+<script>
+/* HOW TO ADD CONTENT: add scenes to a part. Each scene = { img: "p1s1.svg", text: [ "paragraph", "> spoken line" ] }.
+   Lines starting with > are dialogue. Put image files in an images folder next to this file.
+   When a part is ready, remove  soon:true  from it. */
+var PARTS=[
+{title:"The Recording",meta:"Part 1 of 5 · about 5 min read",hook:"The recording had one more minute. I haven’t played it yet.",scenes:[
+ {img:"p1s1.svg",text:[
+  "My grandfather Raghavan lived in Chennai for fifty years, but he kept a house in the hills that he never talked about. Once a year, on the same day, he drove up alone and came back quiet.",
+  "When he died, the lawyer read the will in four minutes. The house comes to me. One condition: the east room upstairs stays locked.",
+  "I wasn’t planning to argue. I was planning to sell."]},
+ {img:"p1s2.svg",text:[
+  "An old man was waiting at the gate with a torch, fog curling around his ankles.",
+  "> “You are late. Raghavan sir always arrived before noon.”",
+  "> “The ghat road was blocked. You must be Selvam.”",
+  "> “Forty years I have kept these keys. Everything is clean. Except upstairs. I don’t go upstairs.”",
+  "> “Why not?”",
+  "> “Sir paid me not to.” He looked at the torch for a moment. “Rice is on the stove.”"]},
+ {img:"p1s3.svg",text:[
+  "Everything inside was old and tired: dust sheets, a clock stopped at some forgotten hour, a steel tiffin carrier on a shelf. At the top of the stairs stood a heavy wooden door with a padlock newer than the door itself.",
+  "Someone had been replacing that lock for decades."]},
+ {img:"p1s4.svg",text:[
+  "That night the pipes knocked and I couldn’t sleep. I propped my phone on the pillow and started a voice recording. Pipes, or rats. I wanted to know which.",
+  "I fell asleep at 1:40.",
+  "At 2:17 I woke to the sound of a woman humming. It was slow, an old film melody, and it stopped one line before the end, then began again. I walked to the foot of the stairs. The moment my foot touched the first step, the humming stopped.",
+  "I told myself it was the wind. But the wind doesn’t stop to wait."]},
+ {img:"p1s5.svg",text:[
+  "In the morning I played the recording over tea. The humming was there. Then a second voice, close to the microphone, sleepy and quiet. My own.",
+  "> “I’m here. I’m sorry I’m late.”",
+  "The humming stopped. Then my voice said one more word.",
+  "> “Meera.”",
+  "I never left that bed. And I have never known anyone called Meera."]}
+]},
+{title:"The Neighbour",soon:true},
+{title:"The Handwriting",soon:true},
+{title:"The Door",soon:true},
+{title:"The Answer",soon:true}
+];
+var S={part:0,size:20,theme:null};
+function load(){try{var v=JSON.parse(localStorage.getItem("reader")||"{}");for(var k in v)S[k]=v[k]}catch(e){}}
+function save(){try{localStorage.setItem("reader",JSON.stringify(S))}catch(e){}}
+function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function theme(){var t=S.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t)}
+function size(){document.documentElement.style.setProperty("--fs",S.size+"px")}
+function nav(){var h="";PARTS.forEach(function(p,i){h+='<button data-i="'+i+'"'+(i===S.part?' class="on"':'')+(p.soon?' disabled title="Coming soon"':'')+'>'+(i+1)+'. '+esc(p.title)+'</button>'});document.getElementById("nav").innerHTML=h}
+function render(i,top){
+  var p=PARTS[i];S.part=i;save();nav();var h='<div class="card"><div class="n">'+(i+1)+'</div><h1>'+esc(p.title)+'</h1><p class="meta">'+esc(p.meta||"")+'</p></div>';
+  p.scenes.forEach(function(sc,k){
+    h+='<figure>Scene image: add '+esc(sc.img)+'<img src="'+sc.img+'" alt="" onerror="this.remove()"></figure>';
+    sc.text.forEach(function(t){h+=t.charAt(0)===">"?'<p class="say">'+esc(t.slice(1).trim())+'</p>':'<p>'+esc(t)+'</p>'})
+  });
+  var nx=PARTS[i+1];
+  h+='<p class="hook">'+esc(p.hook||"")+'</p><div class="end"><button id="pv"'+(i===0?' disabled':'')+'>Previous part</button>'+
+   '<button id="nx"'+(!nx||nx.soon?' disabled':'')+'>'+(!nx?'The end':nx.soon?'Part '+(i+2)+' is coming soon':'Next part')+'</button></div>';
+  document.getElementById("main").innerHTML=h;
+  var pv=document.getElementById("pv"),nb=document.getElementById("nx");
+  pv.onclick=function(){render(i-1,true)};nb.onclick=function(){render(i+1,true)};
+  if(top)scrollTo(0,0);
+}
+document.getElementById("nav").onclick=function(e){var b=e.target.closest("button");if(b&&!b.disabled)render(+b.dataset.i,true)};
+document.getElementById("sm").onclick=function(){S.size=Math.max(15,S.size-2);size();save()};
+document.getElementById("lg").onclick=function(){S.size=Math.min(30,S.size+2);size();save()};
+document.getElementById("th").onclick=function(){S.theme=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";theme();save()};
+addEventListener("scroll",function(){var d=document.documentElement;document.getElementById("bar").style.width=(d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight)*100)+"%"});
+load();if(!PARTS[S.part]||PARTS[S.part].soon)S.part=0;theme();size();render(S.part,false);
+</script>
+</body>
+</html>
